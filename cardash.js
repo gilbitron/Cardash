@@ -3,6 +3,7 @@ var express = require('express'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
     async = require('async'),
+    exec = require('child_process').exec,
     config = require('./config.js');
     OBDReader = require('./lib/OBDReader.js');
 
@@ -62,6 +63,12 @@ io.on('connection', function(socket){
 
 server.listen(3000, function() {
     console.log('Server: http://localhost:%d', server.address().port);
+
+    if(config.runChromium || false){
+        exec('chromium --kiosk http://localhost:'+ server.address().port, function(err, stdout, stderr) {
+            if(err) console.log(err);
+        });
+    }
 });
 
 app.use(express.static(__dirname + '/public'));
