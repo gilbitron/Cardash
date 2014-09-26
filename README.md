@@ -6,6 +6,10 @@ The data is processed by Nodejs and sent to a webpage that uses Socket.io to upd
 in real time. Chromium is used to display the web page. Tapping the touchscreen display allows you to cycle
 through different gauges.
 
+## Demo
+
+https://www.youtube.com/watch?v=3IDu1S85dnE
+
 ## Hardware
 
 * [Raspberry Pi](http://www.raspberrypi.org) (Model B or B+)
