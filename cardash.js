@@ -13,7 +13,11 @@ var obdReader = new OBDReader(config.debug || false),
         'rpm',
         'temp',
         'iat',
-        'maf'
+        'maf',
+        'map',
+        'frp',
+        'load_pct',
+        'throttlepos'
     ];
 
 obdReader.on('connected', function() {
