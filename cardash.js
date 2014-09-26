@@ -6,7 +6,7 @@ var express = require('express'),
     config = require('./config.js');
     OBDReader = require('./lib/OBDReader.js');
 
-var obdReader = new OBDReader(false),
+var obdReader = new OBDReader(true),
     monitors = [
         'vss',
         'rpm',
@@ -31,10 +31,18 @@ obdReader.on('dataReceived', function(reply) {
     io.emit(reply.name, reply);
 });
 
-if(!config.port){
-    obdReader.autoConnect();
+if(config.useBluetooth){
+    if(config.bluetoothAutoConnect){
+        obdReader.autoConnectBluetooth('obd');
+    } else {
+        obdReader.connectBluetooth(config.bluetoothAddress, config.bluetoothChannel);
+    }
 } else {
-    obdReader.connectSerial(config.port);
+    if(config.port){
+        obdReader.connectSerial(config.port);
+    } else {
+        obdReader.autoConnect();
+    }
 }
 
 // Handle Interrupts / Signals
