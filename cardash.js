@@ -6,7 +6,7 @@ var express = require('express'),
     config = require('./config.js');
     OBDReader = require('./lib/OBDReader.js');
 
-var obdReader = new OBDReader(true),
+var obdReader = new OBDReader(config.debug || false),
     monitors = [
         'vss',
         'rpm',
