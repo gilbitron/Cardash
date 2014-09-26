@@ -1,0 +1,11 @@
+{
+  "name": "cardash",
+  "private": true,
+  "dependencies": {
+    "async": "^0.9.0",
+    "bluetooth-serial-port": "^1.1.4",
+    "express": "^4.9.5",
+    "serialport": "^1.4.6",
+    "socket.io": "^1.1.0"
+  }
+}
